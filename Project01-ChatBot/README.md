@@ -1,16 +1,20 @@
-Chatbot
+##Chatbot
 
-This webpage displays an interface with a simple communication interface with an encoded chat program in which
-you can interact with a limited set of inputs.
+This webpage displays an interface with a simple communication interface with an encoded chat program that
+can deliver specific information.
 
-The finished project is the web page version, but the basic console based bot works with the same logic sans
-the DOM manipulating code.
+This iteration of the bot replies with a random quote from Dwayne "The Rock" Johnson. Feel free to get creative
+and familiarize yourself with the possibilites of Javascript by changing the bot to your own fun toy or even
+into a more useful system!
 
 
 Requirements:
 Web Browser (Google Chrome recommended https://www.google.com/chrome/browser/desktop/ )
 Text Editor (VS Code recommended https://code.visualstudio.com/download)
-NodeJS (Select your OS Installer https://nodejs.org/en/download/)
 
+Additional Resources:
 Pure CSS Speech Bubbles by Nicolas Gallagher
 http://nicolasgallagher.com/pure-css-speech-bubbles/demo/
+
+Mozilla Developer Network
+https://developer.mozilla.org/en-US/docs/Web
