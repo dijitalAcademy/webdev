@@ -1,4 +1,6 @@
 //The sample application will utilize Javascript for DOM manipulation and a simple form for input/output actions
+
+//Array of quotes to choose from as a message
 var quotes = [
 "All successes begin with Self-Discipline. It starts with you.",
 "Don't be afraid to be ambitious about your goals. Hard work never stops. Neither should your dreams.",
@@ -47,7 +49,7 @@ var quotes = [
  "Training for me is a metaphor for life, period. The dedication, the determination, the desire, the work ethic, the great successes and the great failures – I take that into life.",
 "My work, my goal, my life, it's like a treadmill. And there's no stop-button on my treadmill. Once I get on, I just keep going.",
  "I'll never, ever be full. I'll always be hungry. Obviously, I'm not talking about food. Growing up I had nothing for such a long time. Someone told me a long time ago and I've never forgotten it, 'Once you've ever been hungry, really, really hungry, then you'll never, ever be full.' So I'll always be hungry in some way, driven and motivated to get what I want.", 
- "I grew up where, when a door closed, a window didn't open. The only thing I had was cracks. I'd do everything to get through those cracks – scratch, claw, bite, push, bleed. Now the opportunity is here. The door is wide open, and it's as big as a garage.",
+ "I grew up where, when a door closed, a window didn't open. The only thing I had was cracks. I'd do everything to get through those cracks - scratch, claw, bite, push, bleed. Now the opportunity is here. The door is wide open, and it's as big as a garage.",
  "Be humble. Be hungry. And always be the hardest worker in the room.",
  "One of the most important things you can accomplish is just being yourself.",
  "Blood, sweat, and respect. First two you give. Last one you earn.",
@@ -59,61 +61,87 @@ var quotes = [
  "I like to use the hard times of the past to motivate me today.",
  "You either play the game or let the game play you."]
 
+//Create variables that represent the DOM elements
 var botText = document.getElementById('botText');
 var userText = document.getElementById('userText');
 var sendMessage = document.getElementById('send');
 var messageText = document.getElementById('message');
-
-botText.innerText = 'javascript rules';
-userText.innerText = 'yea buddy';
-
-var newMessage = userText.cloneNode();
-var newPrompt = botText.cloneNode();
-botText.hidden = userText.hidden = true;
 var conversation = document.getElementById('conversation');
 
+//Miscellaneous test code to access the text displayed in the messages
+/*
+botText.innerText = 'javascript rules';
+userText.innerText = 'yea buddy';
+*/
+
+//Create variables that are representations of the User and Bot generated messages
+var newMessage = userText.cloneNode();
+var newPrompt = botText.cloneNode();
+
+//Hide the original HTML message bubbles
+botText.hidden = userText.hidden = true;
+
+//Add Send Button functionality for the click event
 sendMessage.addEventListener('click', function() {
+    //if there is nothing typed in, don't send a message
     if (!messageText.value) {
         return;
     }
-    newMessage = newMessage.cloneNode();
-    newMessage.innerText = messageText.value;
-    messageText.value = '';
-    conversation.appendChild(newMessage);
-    newMessage.scrollIntoView();
 
+    //New message process
+    newMessage = newMessage.cloneNode(); //Make a fresh copy of the message bubble WITHOUT the text. if cloneNode(true), the text is also copied
+    newMessage.innerText = messageText.value; //set the text in the message to match the input entered by the user
+    messageText.value = ''; //empty out the input box
+    conversation.appendChild(newMessage); //add the new message bubble to the chat screen
+    newMessage.scrollIntoView(); //scroll down to show the new message
+
+    //prepare bot to respond after 2.5 seconds
     setTimeout(function() {
+        
+        //make a new copy of the bot message element
         newPrompt = newPrompt.cloneNode();
-        if (newMessage.innerText.includes('cook'.toLowerCase()) ) {
-            newPrompt.innerText = quotes[Math.floor(Math.random() * quotes.length)];
-        } else if (newMessage.innerText.includes('quit'.toLowerCase())) {
+        
+        if (newMessage.innerText.toLowerCase().includes('cook') ) { //if the user typed in cook/Cook/cOoK/etc, show a new quote
+            
+            newPrompt.innerText = quotes[Math.floor(Math.random() * quotes.length)]; //set the message to include a quote
+
+        } else if (newMessage.innerText.toLowerCase().includes('quit')) { //if the user typed in quit, say goodbye and close the window
+            
             alert('Thanks for checking out the bot!');
             window.close();
-        } else {
+
+        } else { //if the user typed in something else, reply with wah gwan, mon
+            
             newPrompt.innerText = 'wah gwan';
+
         }
-        conversation.appendChild(newPrompt);
-        newPrompt.scrollIntoView();
-    }, 2500)
+        
+        conversation.appendChild(newPrompt); //add the message to the conversation
+        newPrompt.scrollIntoView(); //scroll down to show it
+    }, 2500) //set the time delay for the reply to 2.5 seconds. Written in milliseconds
 });
 
+//Allow the enter key to send the messages to the bot
 messageText.addEventListener('keypress', function(e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13) { 
         sendMessage.click();
     }
 })
 
+//when the page loads, send the initial greetings from the bot
 window.addEventListener('load', function() {
+    //New message process
     newPrompt = newPrompt.cloneNode();
     newPrompt.innerText = "This is not The Rock, but he supports these messages. Assuming that he doesn't regret his own previous public statements.";
     conversation.appendChild(newPrompt);
     newPrompt.scrollIntoView();
 
+    //delay the follow up instructional message
     setTimeout(function() {
         newPrompt = newPrompt.cloneNode();
         newPrompt.innerText = "Reply 'cook' to find out what the Rock is cooking";
         conversation.appendChild(newPrompt);
         newPrompt.scrollIntoView();
-    }, 2500);
+    }, 2000);
 
 });

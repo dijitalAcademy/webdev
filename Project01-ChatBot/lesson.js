@@ -33,3 +33,13 @@ if (x) {
 // for (quit = 0; quit != 1;) {
     
 // }
+
+//Arrays
+
+var array = [1, 2, 3]
+
+console.log(array[0]);
+
+array.push(4);
+
+console.log(array);
