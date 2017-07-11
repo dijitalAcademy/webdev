@@ -7,6 +7,7 @@ This iteration of the bot replies with a random quote from Dwayne "The Rock" Joh
 and familiarize yourself with the possibilites of Javascript by changing the bot to your own fun toy or even
 into a more useful system!
 
+Demo: http://rockbot.surge.sh
 
 Requirements:
 Web Browser (Google Chrome recommended https://www.google.com/chrome/browser/desktop/ )
