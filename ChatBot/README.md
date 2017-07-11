@@ -8,10 +8,12 @@ and familiarize yourself with the possibilites of Javascript by changing the bot
 into a more useful system!
 
 Demo: http://rockbot.surge.sh
+Guide: https://docs.google.com/document/d/1wh9P14FuCF8gihd7MNd6rP0RHLtapr73PyQPw-YoCMA/edit?usp=sharing
 
 Requirements:
 Web Browser (Google Chrome recommended https://www.google.com/chrome/browser/desktop/ )
 Text Editor (VS Code recommended https://code.visualstudio.com/download)
+Github Desktop (https://desktop.github.com/)
 
 Additional Resources:
 Pure CSS Speech Bubbles by Nicolas Gallagher
